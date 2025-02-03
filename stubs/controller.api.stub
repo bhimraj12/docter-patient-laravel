@@ -2,17 +2,22 @@
 
 namespace {{ namespace }};
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ rootNamespace }}Http\Controllers\Api\V1\ApiController;
 use Illuminate\Http\Request;
+use Throwable;
 
-class {{ class }} extends Controller
+class {{ class }} extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
@@ -20,7 +25,11 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
@@ -28,7 +37,11 @@ class {{ class }} extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
@@ -36,7 +49,11 @@ class {{ class }} extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
@@ -44,6 +61,10 @@ class {{ class }} extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 }

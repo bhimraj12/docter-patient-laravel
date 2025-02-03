@@ -3,8 +3,16 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Kblais\QueryFilter\Filterable;
 
 class {{ class }} extends Pivot
 {
-    //
+    use Filterable, HasFactory;
+
+    public $incrementing = true;
+
+    protected $guarded = ['id'];
+
+    public $timestamps = false;
 }

@@ -2,49 +2,69 @@
 
 namespace {{ namespace }};
 
-use {{ namespacedModel }};
-use {{ rootNamespace }}Http\Controllers\Controller;
-use {{ namespacedRequests }}
+use {{ rootNamespace }}Http\Controllers\Api\V1\ApiController;
+use Illuminate\Http\Request;
+use Throwable;
 
-class {{ class }} extends Controller
+class {{ class }} extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store({{ storeRequest }} $request)
+    public function store(Request $request)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show({{ model }} ${{ modelVariable }})
+    public function show(string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    public function update(Request $request, string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy({{ model }} ${{ modelVariable }})
+    public function destroy(string $id)
     {
-        //
+        try {
+            //
+        } catch (Throwable $e) {
+            return $this->internalErrorResponse($e);
+        }
     }
 }
