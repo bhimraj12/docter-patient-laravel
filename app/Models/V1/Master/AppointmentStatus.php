@@ -1,38 +1,37 @@
 <?php
 
-namespace App\Models\V1\User;
+namespace App\Models\V1\Master;
 
-use App\Models\User;
 use App\Models\V1\Appointment\Appointment;
-use App\Observers\CreateUpdateDeleteObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kblais\QueryFilter\Filterable;
 
-class Patient extends Model
+class AppointmentStatus extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    protected $guarded = ['id'];
+    const PENDING = 1;
 
-    public static function boot(){
-        parent::boot();
-        static::observe(CreateUpdateDeleteObserver::class);
-    }
+    const CANCEL = 2;
+
+    const POSTPONED = 3;
+
+    const APPROVED = 4;
+
+    const DENIED = 5;
+
+    const COMPLETED = 6;
+    protected $guarded = ['id'];
 
     public function scopeActive($query)
     {
         return $query->where('status', true);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function appointments()
     {
-        return $this->hasMany(Appointment::class);
+        return $this->hasMany(Appointment::class, 'appointment_status_id');
     }
 }

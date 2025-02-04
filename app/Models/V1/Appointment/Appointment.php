@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models\V1\User;
+namespace App\Models\V1\Appointment;
 
-use App\Models\User;
-use App\Models\V1\Appointment\Appointment;
+use App\Models\V1\Doctor\Doctor;
+use App\Models\V1\Master\AppointmentStatus;
+use App\Models\V1\User\Patient;
 use App\Observers\CreateUpdateDeleteObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kblais\QueryFilter\Filterable;
 
-class Patient extends Model
+class Appointment extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
@@ -26,13 +27,18 @@ class Patient extends Model
         return $query->where('status', true);
     }
 
-    public function user()
+    public function patient()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Patient::class);
     }
 
-    public function appointments()
+    public function doctor()
     {
-        return $this->hasMany(Appointment::class);
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(AppointmentStatus::class, 'appointment_status_id');
     }
 }

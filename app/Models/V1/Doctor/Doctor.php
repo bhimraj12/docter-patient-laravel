@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\V1\User;
+namespace App\Models\V1\Doctor;
 
 use App\Models\User;
 use App\Models\V1\Appointment\Appointment;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kblais\QueryFilter\Filterable;
 
-class Patient extends Model
+class Doctor extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
